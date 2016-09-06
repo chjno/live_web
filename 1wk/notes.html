@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>my page</title>
+    <script type="text/javascript">
+
+      var foo = "something";
+      console.log(foo);
+
+      if (typeof foo == "string") {
+
+      }
+
+
+      // window is implied 
+        // alert();
+        // window.alert();
+
+      console.log(window.document);
+
+
+      var divTwo;
+      var myVideo;
+
+      function whenPageLoads() {
+        window.document.body.innerHTML += "nothing";
+
+        divTwo =  window.document.getElementById("two");
+        divTwo.innerHTML = "hey";
+        divTwo.style.fontSize = "100px";
+
+        divTwo.addEventListener('click', divTwoWasClicked);
+
+        myVideo = document.getElementById("avideo");
+        myVideo.addEventListener('timeupdate',
+          function() {
+            console.log(myVideo.currentTime);
+
+            if (myVideo.currentTime > 10 && myVideo.currentTime < 15) {
+              divTwo.innerHTML = "cow";
+            } else if (myVideo.currentTime >= 15) {
+              divTwo.innerHTML = "hungry";
+            }
+          });
+        myVideo.play();
+
+      }
+
+      function divTwoWasClicked() {
+        divTwo.style.color = "pink";
+      }
+
+      // can add multiple things on 'load'. newer way of doing it.
+      window.addEventListener('load', whenPageLoads);
+
+      // can only use this one thing. don't use this?
+      // window.onLoad(whenPageLoads);
+
+
+
+
+
+    </script>
+  </head>
+  <body>
+    my content
+
+    <div id="one">here's a division of content</div>
+    <div id="two">here's another div</div>
+
+    <!-- h264 & aac compression -->
+    <!-- <video id="avideo" width="720" height="480" src="http://itp.nyu.edu/~sve204/liveweb_fall2016/video.mp4" controls /> -->
+    <video id="avideo" width="720" height="480" src="http://itp.nyu.edu/~sve204/liveweb_fall2016/video.mp4" />
+
+  </body>
+</html>
